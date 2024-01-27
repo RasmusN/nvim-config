@@ -24,4 +24,5 @@ vim.api.nvim_set_keymap("o", "Å", "{", { noremap = true })
 vim.api.nvim_set_keymap("i", "^", "}", { noremap = true })
 vim.api.nvim_set_keymap("o", "^", "}", { noremap = true })
 
+-- Makes it possible to escape terminal with <Esc>
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
