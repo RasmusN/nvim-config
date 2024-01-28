@@ -16,3 +16,7 @@ local opts = {}
 
 require("vim-options")
 require("lazy").setup("plugins")
+
+if vim.g.neovide then
+    require("neovide")
+end
