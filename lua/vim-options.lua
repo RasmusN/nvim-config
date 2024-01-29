@@ -10,17 +10,22 @@ vim.g.mapleader = " "
 vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 
 -- Makes the search light dissapear as soon as we press enter
-vim.api.nvim_set_keymap('c', '<CR>', '<CR>:nohlsearch<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("c", "<CR>", "<CR>:nohlsearch<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<CR>", ":nohlsearch<CR>", { noremap = true, silent = true })
 
 -- Mappings for SE Keyboard setup
 vim.keymap.set({ "n", "v", "o" }, "¤", "$", { noremap = true })
 vim.keymap.set({ "n", "v", "o" }, "-", "/", { noremap = true })
 vim.keymap.set({ "n", "v", "o" }, "_", "?", { noremap = true })
-vim.keymap.set({ "i", "o" }, "å", "[", { noremap = true })
+vim.keymap.set({ "i", "o" }, "å", "[]<left>", { noremap = true })
 vim.keymap.set({ "i", "o" }, "¨", "]", { noremap = true })
-vim.keymap.set({ "i", "o" }, "Å", "{", { noremap = true })
+vim.keymap.set({ "i", "o" }, "Å", "{}<left>", { noremap = true })
 vim.keymap.set({ "i", "o" }, "^", "}", { noremap = true })
+
+-- Autoclose
+vim.keymap.set({ "i" }, '"', '""<left>', { noremap = true })
+vim.keymap.set({ "i" }, "'", "''<left>", { noremap = true })
+vim.keymap.set({ "i" }, "(", "()<left>", { noremap = true })
 
 -- Uggly fix for making sure that at least the most common combinations work
 -- NOTE: In order for "yiÅ" to map to yi{ it has to be pressed fast, otherwise
@@ -39,4 +44,3 @@ vim.keymap.set({ "n", "o" }, "få", "f[", { noremap = true })
 
 -- Makes it possible to escape terminal with <Esc>
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
-
