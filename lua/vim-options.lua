@@ -42,5 +42,8 @@ vim.keymap.set({ "n", "o" }, "tå", "t[", { noremap = true })
 vim.keymap.set({ "n", "o" }, "fÅ", "f{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "få", "f[", { noremap = true })
 
+-- This is just to make the command instant, otherwise it will check for other commands
+vim.keymap.set({ "n", "o" }, "dd", "dd<CR>", { noremap = true })
+
 -- Makes it possible to escape terminal with <Esc>
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
