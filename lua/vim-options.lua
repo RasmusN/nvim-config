@@ -43,6 +43,9 @@ vim.keymap.set({ "n", "o" }, "yiå", "yi[", { noremap = true })
 vim.keymap.set({ "n", "o" }, "diÅ", "di{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "diå", "di[", { noremap = true })
 
+vim.keymap.set({ "n", "o" }, "viÅ", "vi{", { noremap = true })
+vim.keymap.set({ "n", "o" }, "viå", "vi[", { noremap = true })
+
 vim.keymap.set({ "n", "o" }, "tÅ", "t{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "tå", "t[", { noremap = true })
 
