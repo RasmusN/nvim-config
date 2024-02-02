@@ -3,5 +3,6 @@ return {
 	version = "*",
 	opts = {
 		open_mapping = "<C-ö>",
+        direction = 'float',
 	},
 }

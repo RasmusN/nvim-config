@@ -2,6 +2,13 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
+
+if vim.loop.os_uname().sysname == "Windows_NT" then
+    vim.cmd [[let &shell = '"C:\Program Files\Git\bin\bash.exe"']]
+    vim.cmd [[let &shellcmdflag = '-s']]
+end
+
+
 vim.wo.relativenumber = true -- Relative numbers
 vim.wo.number = true -- Show actual line number on current line
 vim.g.mapleader = " "
