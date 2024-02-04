@@ -3,20 +3,19 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
--- Auto refresh externally changed files 
+-- Auto refresh externally changed files
 -- https://stackoverflow.com/questions/62100785/auto-reload-file-and-in-neovim-and-auto-reload-nerbtree
 vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = { "*" },
+	command = "if mode() != 'c' | checktime | endif",
+	pattern = { "*" },
 })
 
 -- Autorun git bash terminal if on windows
 if vim.loop.os_uname().sysname == "Windows_NT" then
-    vim.cmd [[let &shell = '"C:\Program Files\Git\bin\bash.exe"']]
-    vim.cmd [[let &shellcmdflag = '-s']]
+	vim.cmd([[let &shell = '"C:\Program Files\Git\bin\bash.exe"']])
+	vim.cmd([[let &shellcmdflag = '-s']])
 end
-
 
 vim.wo.relativenumber = true -- Relative numbers
 vim.wo.number = true -- Show actual line number on current line
@@ -48,16 +47,14 @@ vim.keymap.set({ "i" }, "(", "()<left>", { noremap = true })
 -- it will be interpreted as yiÅ. Not intentional but kind of nice.
 vim.keymap.set({ "n", "o" }, "yiÅ", "yi{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "yiå", "yi[", { noremap = true })
-
 vim.keymap.set({ "n", "o" }, "diÅ", "di{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "diå", "di[", { noremap = true })
-
 vim.keymap.set({ "n", "o" }, "viÅ", "vi{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "viå", "vi[", { noremap = true })
-
+vim.keymap.set({ "n", "o" }, "ciÅ", "ci{", { noremap = true })
+vim.keymap.set({ "n", "o" }, "ciå", "ci[", { noremap = true })
 vim.keymap.set({ "n", "o" }, "tÅ", "t{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "tå", "t[", { noremap = true })
-
 vim.keymap.set({ "n", "o" }, "fÅ", "f{", { noremap = true })
 vim.keymap.set({ "n", "o" }, "få", "f[", { noremap = true })
 
