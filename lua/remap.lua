@@ -28,39 +28,35 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Default file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
--- Mappings for SE Keyboard setup
+-- Mappings for SE Keyboard layout
 vim.keymap.set({ "n", "v", "o" }, "¤", "$", { noremap = true })
 vim.keymap.set({ "n", "v", "o" }, "-", "/", { noremap = true })
 vim.keymap.set({ "n", "v", "o" }, "_", "?", { noremap = true })
-vim.keymap.set({ "i", "o" }, "å", "[]<left>", { noremap = true })
-vim.keymap.set({ "i", "o" }, "¨", "]", { noremap = true })
-vim.keymap.set({ "i", "o" }, "Å", "{}<left>", { noremap = true })
-vim.keymap.set({ "i", "o" }, "^", "}", { noremap = true })
+
+-- https://stackoverflow.com/a/77940686/4825835
+for _, entry in ipairs({
+    { { "l", "c" }, "å", "[" },
+    { { "l", "c" }, "¨", "]" },
+    { { "l", "c" }, "Å", "{" },
+    { { "l", "c" }, "^", "}" },
+    { { "o", "v" }, "iå", "i[" },
+    { { "o", "v" }, "i¨", "i]" },
+    { { "o", "v" }, "iÅ", "i{" },
+    { { "o", "v" }, "i^", "i}" },
+    { { "o", "v" }, "aå", "a[" },
+    { { "o", "v" }, "a¨", "a]" },
+    { { "o", "v" }, "aÅ", "a{" },
+    { { "o", "v" }, "a^", "a}" },
+}) do
+    local modes, from, to = unpack(entry)
+    vim.keymap.set(modes, from, to, { noremap = true })
+end
+vim.opt.iminsert = 1
 
 -- Autoclose
 vim.keymap.set({ "i" }, '"', '""<left>', { noremap = true })
 vim.keymap.set({ "i" }, "'", "''<left>", { noremap = true })
 vim.keymap.set({ "i" }, "(", "()<left>", { noremap = true })
-
--- Uggly fix for making sure that at least the most common combinations work
--- NOTE: In order for "yiÅ" to map to yi{ it has to be pressed fast, otherwise
--- it will be interpreted as yiÅ. Not intentional but kind of nice.
-vim.keymap.set({ "n", "o" }, "yiÅ", "yi{", { noremap = true })
-vim.keymap.set({ "n", "o" }, "yiå", "yi[", { noremap = true })
-vim.keymap.set({ "n", "o" }, "diÅ", "di{", { noremap = true })
-vim.keymap.set({ "n", "o" }, "diå", "di[", { noremap = true })
-vim.keymap.set({ "n", "o" }, "viÅ", "vi{", { noremap = true })
-vim.keymap.set({ "n", "o" }, "viå", "vi[", { noremap = true })
-vim.keymap.set({ "n", "o" }, "ciÅ", "ci{", { noremap = true })
-vim.keymap.set({ "n", "o" }, "ciå", "ci[", { noremap = true })
-vim.keymap.set({ "n", "o" }, "tÅ", "t{", { noremap = true })
-vim.keymap.set({ "n", "o" }, "tå", "t[", { noremap = true })
-vim.keymap.set({ "n", "o" }, "fÅ", "f{", { noremap = true })
-vim.keymap.set({ "n", "o" }, "få", "f[", { noremap = true })
-
--- This is just to make the command instant, otherwise it will check for other commands
-vim.keymap.set({ "n", "o" }, "dd", "dd<CR>", { noremap = true })
-vim.keymap.set({ "n", "o" }, "yy", "yy<CR>", { noremap = true })
 
 -- Makes it possible to escape terminal with <Esc>
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
