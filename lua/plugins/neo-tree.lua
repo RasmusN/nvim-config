@@ -9,7 +9,7 @@ return {
 	config = function()
 		vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>")
 		require("neo-tree").setup({
-			enable_normal_mode_for_inputs = true,
+			enable_normal_mode_for_inputs = false,
 			window = {
 				position = "left",
 				width = 40,
