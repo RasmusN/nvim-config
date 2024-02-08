@@ -7,10 +7,24 @@ return {
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<Leader>pf", builtin.find_files, {})
 			vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-			vim.keymap.set("n", "<Leader>ps", function ()
-			    builtin.grep_string({ search = vim.fn.input("Grep > ")});
+			vim.keymap.set("n", "<Leader>ps", function()
+				builtin.grep_string({ search = vim.fn.input("Grep > ") })
 			end)
-		end
+
+			local actions = require("telescope.actions")
+			require("telescope").setup({
+				defaults = {
+					mappings = {
+						i = {
+							["<C-k>"] = actions.move_selection_previous,
+							["<C-j>"] = actions.move_selection_next,
+							["<C-h>"] = actions.preview_scrolling_left,
+							["<C-l>"] = actions.preview_scrolling_right,
+						},
+					},
+				},
+			})
+		end,
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
