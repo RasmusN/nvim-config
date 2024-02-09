@@ -60,3 +60,7 @@ vim.keymap.set({ "i" }, "(", "()<left>", { noremap = true })
 
 -- Makes it possible to escape terminal with <Esc>
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
+
+-- Toggle last file
+vim.keymap.set({ "n", "i" }, "<C-TAB>", "<C-6>", { noremap = true })
+
