@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 if vim.loop.os_uname().sysname == "Windows_NT" then
     vim.cmd([[let &shell = '"C:\Program Files\Git\bin\bash.exe"']])
     vim.cmd([[let &shellcmdflag = '-s']])
+    vim.cmd("set shellslash")
 end
 
 vim.wo.relativenumber = true -- Relative numbers
