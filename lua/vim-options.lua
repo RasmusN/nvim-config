@@ -6,6 +6,7 @@ vim.cmd("set shiftwidth=4")
 
 vim.opt.wrap = false       -- No line wrap
 vim.opt.incsearch = true   -- Help guides searches
+vim.opt.hlsearch = false   -- No highlight on search
 vim.opt.scrolloff = 8      -- Keep min distance from bottom/top to cursor
 vim.opt.updatetime = 50    -- Fast update time
 vim.opt.colorcolumn = "80" -- --> Column
@@ -30,7 +31,3 @@ vim.g.mapleader = " "
 
 -- Disable leader key from moving forward in normal mode
 vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", { noremap = true, silent = true })
-
--- Makes the search light dissapear as soon as we press enter
-vim.api.nvim_set_keymap("c", "<CR>", "<CR>:nohlsearch<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<CR>", ":nohlsearch<CR>", { noremap = true, silent = true })
