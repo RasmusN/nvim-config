@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pyright" },
+                ensure_installed = { "lua_ls", "pyright", "marksman" },
             })
         end,
     },
@@ -18,7 +18,7 @@ return {
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
-
+            lspconfig.marksman.setup({})
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 settings = {
