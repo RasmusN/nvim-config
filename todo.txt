@@ -1,4 +1,0 @@
-* Add support for JSON
-* Make <tab> do the same thing as <C-j> when autocomplete
-* Disable mouse: https://vi.stackexchange.com/questions/31125/how-to-disable-mouse-in-neovim
-* Add autoclose {}[]''
