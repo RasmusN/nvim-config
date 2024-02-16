@@ -12,11 +12,11 @@ vim.opt.updatetime = 50    -- Fast update time
 vim.opt.colorcolumn = "80" -- --> Column
 
 -- Auto refresh externally changed files
--- https://stackoverflow.com/questions/62100785/auto-reload-file-and-in-neovim-and-auto-reload-nerbtree
+-- https://unix.stackexchange.com/a/760218
 vim.o.autoread = true
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-    command = "if mode() != 'c' | checktime | endif",
-    pattern = { "*" },
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI'}, {
+      pattern = '*',
+  command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif",
 })
 
 -- Autorun git bash terminal if on windows
