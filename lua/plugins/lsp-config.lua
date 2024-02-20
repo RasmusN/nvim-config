@@ -24,22 +24,17 @@ return {
 				settings = {
 					Lua = {
 						runtime = {
-							-- Tell the language server which version of Lua you're using
-							-- (most likely LuaJIT in the case of Neovim)
 							version = "LuaJIT",
 						},
 						diagnostics = {
-							-- Get the language server to recognize the `vim` global
 							globals = {
 								"vim",
 								"require",
 							},
 						},
 						workspace = {
-							-- Make the server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
 						},
-						-- Do not send telemetry data containing a randomized but unique identifier
 						telemetry = {
 							enable = false,
 						},
@@ -53,6 +48,10 @@ return {
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set({ "n", "v" }, "<leader>r", vim.lsp.buf.rename, {})
+			vim.keymap.set({ "n", "v" }, "<leader>d", vim.diagnostic.open_float, {})
+            vim.diagnostic.config({
+              virtual_text = false, -- Turn off inline diagnostics
+            })
 		end,
 	},
 }
