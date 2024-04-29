@@ -53,11 +53,6 @@ for _, entry in ipairs({
 end
 vim.opt.iminsert = 1
 
--- Autoclose
-vim.keymap.set({ "i" }, '"', '""<left>', { noremap = true })
-vim.keymap.set({ "i" }, "'", "''<left>", { noremap = true })
-vim.keymap.set({ "i" }, "(", "()<left>", { noremap = true })
-
 -- Makes it possible to escape terminal with <Esc>
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 
