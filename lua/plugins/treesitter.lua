@@ -3,7 +3,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	config = function()
-		require("nvim-treesitter.install").compilers = { "clang" }
+		require("nvim-treesitter.install").compilers = { "zig", "clang" }
 		local config = require("nvim-treesitter.configs")
 		config.setup({
 			auto_install = true,
