@@ -59,3 +59,12 @@ vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 -- Toggle last file
 vim.keymap.set({ "n", "i" }, "<C-TAB>", "<C-6>", { noremap = true })
 
+-- Fixes the bug where code from clipboard gets increasingly indentation
+function PasteClipboard()
+    vim.o.paste = true 
+    -- Paste clipboard content
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"*p', true, false, true), 'x', false)
+    vim.o.paste = false
+    end
+vim.api.nvim_set_keymap('i', '<C-r>+', '<Cmd>lua PasteClipboard()<CR>', { noremap = true, silent = true })
+
