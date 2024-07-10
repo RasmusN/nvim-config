@@ -68,3 +68,5 @@ function PasteClipboard()
     end
 vim.api.nvim_set_keymap('i', '<C-r>+', '<Cmd>lua PasteClipboard()<CR>', { noremap = true, silent = true })
 
+-- Go to next error
+vim.keymap.set("n", "<leader>ge", vim.diagnostic.goto_next)
