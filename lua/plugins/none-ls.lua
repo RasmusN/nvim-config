@@ -10,6 +10,7 @@ return {
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.gofumpt,
                 null_ls.builtins.formatting.sqlfmt,
+                null_ls.builtins.formatting.csharpier,
 			},
 		})
 		vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
