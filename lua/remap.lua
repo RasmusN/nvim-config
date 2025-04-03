@@ -62,11 +62,20 @@ vim.keymap.set({ "n", "i" }, "<C-TAB>", "<C-6>", { noremap = true })
 -- Fixes the bug where code from clipboard gets increasingly indentation
 function PasteClipboard()
     vim.o.paste = true 
+    -- Get the cursor position before pasting
+    local start_row, start_col = unpack(vim.api.nvim_win_get_cursor(0))
     -- Paste clipboard content
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"*p', true, false, true), 'x', false)
     vim.o.paste = false
-    end
+
+    -- Move the cursor to the end of the pasted content  
+    -- Calculate the end row after pasting
+    local end_row = start_row + vim.fn.line("'>") - vim.fn.line("'<")
+    local last_line = vim.api.nvim_buf_get_lines(0, end_row - 1, end_row, false)[0] or ""
+    vim.api.nvim_win_set_cursor(0, {end_row, #last_line})
+end
 vim.api.nvim_set_keymap('i', '<C-r>+', '<Cmd>lua PasteClipboard()<CR>', { noremap = true, silent = true })
 
 -- Go to next error
 vim.keymap.set("n", "<leader>ge", vim.diagnostic.goto_next)
+
