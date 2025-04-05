@@ -50,8 +50,9 @@ return {
 				},
 			})
 			lspconfig.pyright.setup({})
-            lspconfig.omnisharp.setup({  
-                cmd = { "omnisharp", "--verbose"},
+            local omnisharp_path = "/Users/rasmus/Apps/omnisharp-osx-arm64-net6.0/OmniSharp"
+            lspconfig.omnisharp.setup({
+                cmd = {omnisharp_path, "--languageserver"},
                 autostart = true,
             })
             lspconfig.tsserver.setup({
