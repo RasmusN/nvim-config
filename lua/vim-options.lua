@@ -10,6 +10,7 @@ vim.opt.hlsearch = false -- No highlight on search
 vim.opt.scrolloff = 8 -- Keep min distance from bottom/top to cursor
 vim.opt.updatetime = 50 -- Fast update time
 vim.opt.colorcolumn = "120" -- --> Column
+vim.opt.ignorecase = true -- Ignore case when searching
 
 -- Highlight yanked text
 -- https://stackoverflow.com/a/73365602/4825835
