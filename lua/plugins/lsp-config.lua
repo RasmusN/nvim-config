@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "marksman"},
+				ensure_installed = { "lua_ls", "marksman", "tsserver", "html", "cssls", "jsonls"},
 			})
 		end,
 	},
@@ -53,11 +53,27 @@ return {
                 cmd = { "omnisharp", "--verbose"},
                 autostart = true,
             })
-			vim.keymap.set("n", "gh", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+            lspconfig.tsserver.setup({
+                cmd = {
+                    "node",
+                    "C:\\Users\\RASMUS~1\\AppData\\Local\\NVIM-D~1\\mason\\packages\\TYPESC~1\\NODE_M~1\\TYPESC~1\\lib\\cli.mjs",
+                    "--stdio"
+                },
+            })
+            local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+            local langservers = mason_packages .. "/html-lsp/node_modules/vscode-langservers-extracted/bin/"
+            lspconfig.html.setup({
+                cmd = { "node", langservers .. "vscode-html-language-server", "--stdio" },
+            })
+
+            lspconfig.cssls.setup({
+                cmd = { "node", langservers .. "vscode-css-language-server", "--stdio" },
+            })
+            vim.keymap.set("n", "gh", vim.lsp.buf.hover, {})
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set({ "n", "v" }, "<leader>r", vim.lsp.buf.rename, {})
-			vim.keymap.set({ "n", "v" }, "<leader>d", vim.diagnostic.open_float, {})
+            vim.keymap.set({ "n", "v" }, "<leader>d", vim.diagnostic.open_float, {})
 			vim.diagnostic.config({
 				virtual_text = false, -- Turn off inline diagnostics
 			})

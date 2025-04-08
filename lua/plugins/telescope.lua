@@ -10,8 +10,16 @@ return {
 			vim.keymap.set("n", "<Leader>ps", function()
 				builtin.grep_string({ search = vim.fn.input("Grep > ") })
 			end)
+            -- Normal mode: search word under cursor
+            vim.keymap.set("n", "<Leader>t", builtin.grep_string, {})
 
-			local actions = require("telescope.actions")
+            -- Visual mode: search selected text
+            vim.keymap.set("v", "<Leader>t", function()
+                local text = vim.getVisualSelection()
+                builtin.grep_string({ search = text })
+            end, {})
+
+            local actions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
 					mappings = {
