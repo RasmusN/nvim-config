@@ -21,6 +21,7 @@ return {
             -- Golang LSP 
             -- Manually specifying root pattern is needed for some reason. 
             lspconfig.gopls.setup({
+                filetypes = {"go", "gomod", "gowork", "gotmpl"},
                 root_dir = function(fname)
                     return lspconfig.util.root_pattern('go.mod', '.git')(fname) or lspconfig.util.path.dirname(fname)
                 end,
