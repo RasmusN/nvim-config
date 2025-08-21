@@ -25,6 +25,9 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Replace whatever word you are on
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Replace your selection
+vim.keymap.set("v", "<leader>s", [["hy:%s/\V<C-r>=escape(@h, '/\')<CR>/<C-r>=escape(@h, '/\')<CR>/gI<Left><Left><Left>]])
+
 -- Default file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
