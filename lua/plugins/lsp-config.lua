@@ -55,13 +55,7 @@ return {
                 cmd = {omnisharp_path, "--languageserver"},
                 autostart = true,
             })
-            lspconfig.tsserver.setup({
-                cmd = {
-                    "node",
-                    "C:\\Users\\RASMUS~1\\AppData\\Local\\NVIM-D~1\\mason\\packages\\TYPESC~1\\NODE_M~1\\TYPESC~1\\lib\\cli.mjs",
-                    "--stdio"
-                },
-            })
+            lspconfig.tsserver.setup({})
             local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
             local langservers = mason_packages .. "/html-lsp/node_modules/vscode-langservers-extracted/bin/"
             lspconfig.html.setup({
