@@ -1,6 +1,9 @@
-  return {
-      'tzachar/local-highlight.nvim',
-      config = function()
-        require('local-highlight').setup()
-      end
-  }
+return {
+    { "folke/snacks.nvim" },
+    { 
+        'tzachar/local-highlight.nvim',
+        config = function()
+          require('local-highlight').setup()
+        end
+    },
+}

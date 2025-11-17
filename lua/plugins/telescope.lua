@@ -48,8 +48,8 @@ return {
             i = {
               ["<C-k>"] = actions.move_selection_previous,
               ["<C-j>"] = actions.move_selection_next,
-              ["<C-h>"] = actions.preview_scrolling_left,
-              ["<C-l>"] = actions.preview_scrolling_right,
+              ["<C-h>"] = actions.move_selection_previous,
+              ["<C-l>"] = actions.move_selection_next,
             },
           },
         },

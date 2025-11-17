@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "marksman", "tsserver", "html", "cssls", "jsonls"},
+				ensure_installed = { "lua_ls", "marksman", "ts_ls", "html", "cssls", "jsonls", "wgsl_analyzer"},
 			})
 		end,
 	},
@@ -25,6 +25,10 @@ return {
                 root_dir = function(fname)
                     return lspconfig.util.root_pattern('go.mod', '.git')(fname) or lspconfig.util.path.dirname(fname)
                 end,
+            })
+            local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+            lspconfig.wgsl_analyzer.setup({
+                cmd = { mason_bin .. "/wgsl-analyzer" },
             })
             lspconfig.marksman.setup({})
 			lspconfig.lua_ls.setup({
@@ -55,7 +59,7 @@ return {
                 cmd = {omnisharp_path, "--languageserver"},
                 autostart = true,
             })
-            lspconfig.tsserver.setup({})
+            lspconfig.ts_ls.setup({})
             local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
             local langservers = mason_packages .. "/html-lsp/node_modules/vscode-langservers-extracted/bin/"
             lspconfig.html.setup({
