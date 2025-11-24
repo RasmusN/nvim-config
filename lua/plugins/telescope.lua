@@ -16,7 +16,7 @@ return {
         builtin.grep_string({ search = vim.fn.input("Grep > ") })
       end)
       vim.keymap.set("n", "<Leader>t", builtin.grep_string, {})
-
+      vim.keymap.set("n", "fc", builtin.current_buffer_fuzzy_find, {})
       -- Visual mode: search selected text
       vim.keymap.set("v", "<Leader>t", function()
         local text = vim.getVisualSelection()
