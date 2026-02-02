@@ -34,6 +34,11 @@ return {
                 filetypes = { "go", "gomod", "gowork", "gotmpl" },
                 root_markers = { "go.work", "go.mod", ".git" },
                 workspace_required = true, -- only start gopls when a workspace is found
+                settings = {
+                    gopls = {
+                        gofumpt = true,
+                    },
+                }
             })
 
             -- WGSL analyzer (use Mason's bin)
@@ -111,7 +116,7 @@ return {
                 vim.lsp.enable(server)
             end
 
-            -- Keymaps / diagnostics 
+            -- Keymaps / diagnostics
             vim.keymap.set("n", "gh", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
             vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {})
