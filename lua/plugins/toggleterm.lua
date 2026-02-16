@@ -6,8 +6,8 @@ return {
 		direction = "float",
 	},
 	keys = {
-		{ "<leader>1", "<Cmd>1ToggleTerm direction=float<CR>", mode = { "n", "t" }, desc = "Toggle terminal 1" },
-		{ "<leader>2", "<Cmd>2ToggleTerm direction=float<CR>", mode = { "n", "t" }, desc = "Toggle terminal 2" },
-		{ "<leader>3", "<Cmd>3ToggleTerm direction=float<CR>", mode = { "n", "t" }, desc = "Toggle terminal 3" },
+		{ "<C-1>", "<Cmd>1ToggleTerm direction=float<CR>", mode = { "n", "t" }, desc = "Toggle terminal 1" },
+		{ "<C-2>", "<Cmd>2ToggleTerm direction=float<CR>", mode = { "n", "t" }, desc = "Toggle terminal 2" },
+		{ "<C-3>", "<Cmd>3ToggleTerm direction=float<CR>", mode = { "n", "t" }, desc = "Toggle terminal 3" },
 	},
 }
